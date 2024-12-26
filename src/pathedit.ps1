@@ -49,11 +49,23 @@ function Backup-EnvironmentVariables {
     param()
 
     $Timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
+    # Use Documents folder as fallback location if script path cannot be determined
     $ScriptDir = Split-Path -Parent -Path ($MyInvocation.MyCommand.Path)
-    if (!$ScriptDir) { $ScriptDir = Split-Path -Parent -Path $PSCommandPath }
+    if (!$ScriptDir) {
+        $ScriptDir = Split-Path -Parent -Path $PSCommandPath
+        if (!$ScriptDir) {
+            $ScriptDir = Join-Path -Path ([Environment]::GetFolderPath('MyDocuments')) -ChildPath 'PATHedit'
+        }
+    }
     $BackupPath = Join-Path -Path $ScriptDir -ChildPath "PathBackup_$Timestamp.txt"
 
     try {
+        # Create directory if it doesn't exist
+        $BackupDir = Split-Path -Parent -Path $BackupPath
+        if (!(Test-Path -Path $BackupDir)) {
+            New-Item -ItemType Directory -Path $BackupDir -Force | Out-Null
+        }
+
         "$((Get-Date).ToString()) - Backing up environment variables" | Out-File -Path $BackupPath
         "----------------- System Path -----------------" | Out-File -Path $BackupPath -Append
         ([Environment]::GetEnvironmentVariable("Path", "Machine") | Out-String) | Out-File -Path $BackupPath -Append
