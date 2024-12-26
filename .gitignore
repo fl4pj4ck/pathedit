@@ -1,0 +1,23 @@
+# Backup files
+PathBackup_*.txt
+
+# PowerShell
+*.ps1xml
+*.psc1
+*.psd1
+*.psm1
+*.pssc
+*.cdxml
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Logs
+*.log
