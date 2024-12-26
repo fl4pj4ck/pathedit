@@ -21,12 +21,12 @@ A PowerShell GUI tool for managing Windows PATH environment variables.
 
 ## Installation
 
-### Option 1: Direct Installation
+### Option 1: Run directly
 ```powershell
 irm https://raw.githubusercontent.com/fl4pj4ck/pathedit/main/src/pathedit.ps1 | iex
 ```
 
-### Option 2: Manual Installation
+### Option 2: Run locally
 1. Clone the repository or download the latest release
 2. Run `src/pathedit.ps1`
 
