@@ -12,6 +12,13 @@ A PowerShell GUI tool for managing Windows PATH environment variables.
 - Double-click to edit entries
 - Browse folders support
 
+### Todo
+
+- [ ] Proper import/export functionality
+- [ ] Implementing path validation
+- [ ] Ability to move blocks of more than one
+- [ ] Improve backup management
+
 ## Installation
 
 ### Option 1: Direct Installation
